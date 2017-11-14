@@ -30,6 +30,7 @@
 				</executions>
 				<configuration>
 					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
+					<apiBaseDir>${basedir}/../sbtest-portlet-service</apiBaseDir>
 					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
 					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
 					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
@@ -56,6 +57,11 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>com.liferay</groupId>
+			<artifactId>tasks-portlet-service</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
