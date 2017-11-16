@@ -14,7 +14,7 @@
 
 package com.liferay.tasks.service;
 
-import com.liferay.portal.service.InvokableLocalService;
+import com.liferay.portal.kernel.service.InvokableLocalService;
 
 /**
  * @author Ryan Park

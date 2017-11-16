@@ -17,7 +17,7 @@
 
 package com.liferay.tasks;
 
-import com.liferay.portal.NoSuchModelException;
+import com.liferay.portal.kernel.exception.NoSuchModelException;
 
 /**
  * @author Brian Wing Shun Chan
