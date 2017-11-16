@@ -55,7 +55,7 @@
 				<artifactId>
 					com.liferay.portal.tools.service.builder
 				</artifactId>
-				<version>1.0.142</version>
+				<version>1.0.148</version>
 				<configuration>
 					<apiDirName>
 						../tasks-portlet-service/src/main/java

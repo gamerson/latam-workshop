@@ -5478,8 +5478,65 @@ public class TasksEntryPersistenceImpl extends BasePersistenceImpl<TasksEntry>
 
 		finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-		if (isNew || !TasksEntryModelImpl.COLUMN_BITMASK_ENABLED) {
+		if (!TasksEntryModelImpl.COLUMN_BITMASK_ENABLED) {
 			finderCache.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+		}
+		else
+		 if (isNew) {
+			Object[] args = new Object[] { tasksEntryModelImpl.getGroupId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_GROUPID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_GROUPID,
+				args);
+
+			args = new Object[] { tasksEntryModelImpl.getUserId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
+				args);
+
+			args = new Object[] { tasksEntryModelImpl.getAssigneeUserId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_ASSIGNEEUSERID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_ASSIGNEEUSERID,
+				args);
+
+			args = new Object[] { tasksEntryModelImpl.getResolverUserId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_RESOLVERUSERID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RESOLVERUSERID,
+				args);
+
+			args = new Object[] {
+					tasksEntryModelImpl.getGroupId(),
+					tasksEntryModelImpl.getUserId()
+				};
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_G_U, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_U,
+				args);
+
+			args = new Object[] {
+					tasksEntryModelImpl.getGroupId(),
+					tasksEntryModelImpl.getAssigneeUserId()
+				};
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_G_A, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_A,
+				args);
+
+			args = new Object[] {
+					tasksEntryModelImpl.getGroupId(),
+					tasksEntryModelImpl.getResolverUserId()
+				};
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_G_R, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_G_R,
+				args);
+
+			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
+				FINDER_ARGS_EMPTY);
 		}
 
 		else {
@@ -5804,7 +5861,7 @@ public class TasksEntryPersistenceImpl extends BasePersistenceImpl<TasksEntry>
 		query.append(_SQL_SELECT_TASKSENTRY_WHERE_PKS_IN);
 
 		for (Serializable primaryKey : uncachedPrimaryKeys) {
-			query.append(String.valueOf(primaryKey));
+			query.append((long)primaryKey);
 
 			query.append(StringPool.COMMA);
 		}

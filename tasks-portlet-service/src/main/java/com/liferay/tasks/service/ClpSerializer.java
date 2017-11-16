@@ -215,14 +215,16 @@ public class ClpSerializer {
 
 	public static Throwable translateThrowable(Throwable throwable) {
 		if (_useReflectionToTranslateThrowable) {
+			ObjectInputStream objectInputStream = null;
+			ObjectOutputStream objectOutputStream = null;
+
 			try {
 				UnsyncByteArrayOutputStream unsyncByteArrayOutputStream = new UnsyncByteArrayOutputStream();
-				ObjectOutputStream objectOutputStream = new ObjectOutputStream(unsyncByteArrayOutputStream);
+				objectOutputStream = new ObjectOutputStream(unsyncByteArrayOutputStream);
 
 				objectOutputStream.writeObject(throwable);
 
 				objectOutputStream.flush();
-				objectOutputStream.close();
 
 				UnsyncByteArrayInputStream unsyncByteArrayInputStream = new UnsyncByteArrayInputStream(unsyncByteArrayOutputStream.unsafeGetByteArray(),
 						0, unsyncByteArrayOutputStream.size());
@@ -231,12 +233,10 @@ public class ClpSerializer {
 
 				ClassLoader contextClassLoader = currentThread.getContextClassLoader();
 
-				ObjectInputStream objectInputStream = new ClassLoaderObjectInputStream(unsyncByteArrayInputStream,
+				objectInputStream = new ClassLoaderObjectInputStream(unsyncByteArrayInputStream,
 						contextClassLoader);
 
 				throwable = (Throwable)objectInputStream.readObject();
-
-				objectInputStream.close();
 
 				return throwable;
 			}
@@ -258,6 +258,29 @@ public class ClpSerializer {
 				_log.error(throwable2, throwable2);
 
 				return throwable2;
+			}
+			finally {
+				if (objectOutputStream != null) {
+					try {
+						objectOutputStream.close();
+					}
+					catch (Throwable throwable2) {
+						_log.error(throwable2, throwable2);
+
+						return throwable2;
+					}
+				}
+
+				if (objectInputStream != null) {
+					try {
+						objectInputStream.close();
+					}
+					catch (Throwable throwable2) {
+						_log.error(throwable2, throwable2);
+
+						return throwable2;
+					}
+				}
 			}
 		}
 
