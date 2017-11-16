@@ -16,28 +16,7 @@
 	<version>1.0.0</version>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>com.liferay.maven.plugins</groupId>
-				<artifactId>liferay-maven-plugin</artifactId>
-				<version>${liferay.maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>build-css</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
-					<apiBaseDir>${basedir}/../sbtest-portlet-service</apiBaseDir>
-					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
-					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
-					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
-					<liferayVersion>${liferay.version}</liferayVersion>
-					<pluginType>portlet</pluginType>
-				</configuration>
-			</plugin>
+			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5</version>
@@ -54,7 +33,61 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-		</plugins>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>com.liferay.css.builder</artifactId>
+				<version>1.0.21</version>
+				<executions>
+					<execution>
+						<id>default-build-css</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>build-css</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<docrootDirName>src/main/webapp</docrootDirName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.liferay</groupId>
+				<artifactId>
+					com.liferay.portal.tools.service.builder
+				</artifactId>
+				<version>1.0.142</version>
+				<configuration>
+					<apiDirName>
+						../tasks-portlet-service/src/main/java
+					</apiDirName>
+					<autoNamespaceTables>true</autoNamespaceTables>
+					<buildNumberIncrement>true</buildNumberIncrement>
+					<hbmFileName>
+						src/main/resources/META-INF/portlet-hbm.xml
+					</hbmFileName>
+					<implDirName>src/main/java</implDirName>
+					<inputFileName>
+						src/main/webapp/WEB-INF/service.xml
+					</inputFileName>
+					<modelHintsFileName>
+						src/main/resources/META-INF/portlet-model-hints.xml
+					</modelHintsFileName>
+					<osgiModule>false</osgiModule>
+					<pluginName>tasks-portlet</pluginName>
+					<propsUtil>
+						com.liferay.util.service.ServiceProps
+					</propsUtil>
+					<resourcesDirName>
+						src/main/resources
+					</resourcesDirName>
+					<springNamespaces>beans</springNamespaces>
+					<springFileName>
+						src/main/resources/META-INF/portlet-spring.xml
+					</springFileName>
+					<sqlDirName>src/main/webapp/WEB-INF/sql</sqlDirName>
+					<sqlFileName>tables.sql</sqlFileName>
+				</configuration>
+			</plugin></plugins>
 	</build>
 	<dependencies>
 		<dependency>
@@ -64,26 +97,26 @@
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
-			<version>${liferay.version}</version>
+			<artifactId>com.liferay.portal.kernel</artifactId>
+			<version>2.6.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>util-bridges</artifactId>
-			<version>${liferay.version}</version>
+			<artifactId>com.liferay.util.bridges</artifactId>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>util-taglib</artifactId>
-			<version>${liferay.version}</version>
+			<artifactId>com.liferay.util.taglib</artifactId>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>util-java</artifactId>
-			<version>${liferay.version}</version>
+			<artifactId>com.liferay.util.java</artifactId>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -102,6 +135,12 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bnd.annotation</artifactId>
+			<version>3.2.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
