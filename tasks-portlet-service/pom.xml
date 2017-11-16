@@ -9,23 +9,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>tasks-portlet-service</artifactId>
 	<version>1.0.0</version>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.liferay.maven.plugins</groupId>
-				<artifactId>liferay-maven-plugin</artifactId>
-				<version>${liferay.maven.plugin.version}</version>
-				<configuration>
-					<webappBaseDir>${basedir}/../tasks-portlet</webappBaseDir>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
-			<artifactId>portal-service</artifactId>
-			<version>${liferay.version}</version>
+			<artifactId>com.liferay.portal.kernel</artifactId>
+			<version>2.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bnd.annotation</artifactId>
+			<version>3.2.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

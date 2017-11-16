@@ -23,13 +23,16 @@
 	<profiles>
 		<profile>
 			<id>6.2.5</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<liferay.version>6.2.5</liferay.version>
 				<liferay.maven.plugin.version>6.2.5</liferay.maven.plugin.version>
-				<liferay.auto.deploy.dir>${user.home}/dev/liferay portals/liferay-portal-6.2-ce-ga6/deploy</liferay.auto.deploy.dir>
-				<liferay.app.server.deploy.dir>${user.home}/dev/liferay portals/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
-				<liferay.app.server.lib.global.dir>${user.home}/dev/liferay portals/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
-				<liferay.app.server.portal.dir>${user.home}/dev/liferay portals/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
+				<liferay.auto.deploy.dir>/home/andy/dev java/portal-sdk/liferay-portal-6.2-ce-ga6/deploy</liferay.auto.deploy.dir>
+				<liferay.app.server.deploy.dir>/home/andy/dev java/portal-sdk/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
+				<liferay.app.server.lib.global.dir>/home/andy/dev java/portal-sdk/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
+				<liferay.app.server.portal.dir>/home/andy/dev java/portal-sdk/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
 			</properties>
 		</profile>
 	</profiles>
