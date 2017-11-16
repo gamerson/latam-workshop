@@ -21,6 +21,10 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.security.permission.PermissionChecker;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.PortalUtil;
+
+import javax.portlet.PortletRequest;
+
 import com.liferay.asset.kernel.model.AssetRenderer;
 import com.liferay.asset.kernel.model.BaseAssetRendererFactory;
 import com.liferay.tasks.model.TasksEntry;
@@ -66,8 +70,8 @@ public class TasksEntryAssetRendererFactory extends BaseAssetRendererFactory {
 	}
 
 	@Override
-	protected String getIconPath(ThemeDisplay themeDisplay) {
-		return themeDisplay.getPathThemeImages() + "/tasks/icon.png";
+	public String getIconPath(PortletRequest portletRequest) {
+		return PortalUtil.getPortalURL(portletRequest) + "/tasks-portlet/tasks/icon.png";
 	}
 
 }
