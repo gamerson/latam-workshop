@@ -16,7 +16,6 @@ package com.liferay.tasks.service.persistence.impl;
 
 import com.liferay.portal.kernel.bean.BeanReference;
 import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
-
 import com.liferay.tasks.model.TasksEntry;
 import com.liferay.tasks.service.persistence.TasksEntryPersistence;
 

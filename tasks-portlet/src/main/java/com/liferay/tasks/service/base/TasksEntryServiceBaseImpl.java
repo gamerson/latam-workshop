@@ -25,7 +25,6 @@ import com.liferay.portal.kernel.service.BaseServiceImpl;
 import com.liferay.portal.kernel.service.persistence.ClassNamePersistence;
 import com.liferay.portal.kernel.service.persistence.UserPersistence;
 import com.liferay.portal.kernel.util.PortalUtil;
-
 import com.liferay.tasks.model.TasksEntry;
 import com.liferay.tasks.service.TasksEntryService;
 import com.liferay.tasks.service.persistence.TasksEntryFinder;

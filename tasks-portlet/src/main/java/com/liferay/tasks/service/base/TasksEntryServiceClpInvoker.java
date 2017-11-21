@@ -14,11 +14,11 @@
 
 package com.liferay.tasks.service.base;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.tasks.service.TasksEntryServiceUtil;
 
 import java.util.Arrays;
+
+import aQute.bnd.annotation.ProviderType;
 
 /**
  * @author Ryan Park

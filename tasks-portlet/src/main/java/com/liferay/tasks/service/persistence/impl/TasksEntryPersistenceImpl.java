@@ -14,8 +14,6 @@
 
 package com.liferay.tasks.service.persistence.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.bean.BeanReference;
 import com.liferay.portal.kernel.dao.orm.EntityCache;
 import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
@@ -38,7 +36,6 @@ import com.liferay.portal.kernel.service.persistence.impl.BasePersistenceImpl;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
-
 import com.liferay.tasks.exception.NoSuchTasksEntryException;
 import com.liferay.tasks.model.TasksEntry;
 import com.liferay.tasks.model.impl.TasksEntryImpl;
@@ -46,7 +43,6 @@ import com.liferay.tasks.model.impl.TasksEntryModelImpl;
 import com.liferay.tasks.service.persistence.TasksEntryPersistence;
 
 import java.io.Serializable;
-
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -55,6 +51,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import aQute.bnd.annotation.ProviderType;
 
 /**
  * The persistence implementation for the tasks entry service.

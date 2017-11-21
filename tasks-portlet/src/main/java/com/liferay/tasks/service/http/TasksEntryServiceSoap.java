@@ -14,14 +14,13 @@
 
 package com.liferay.tasks.service.http;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-
 import com.liferay.tasks.service.TasksEntryServiceUtil;
 
 import java.rmi.RemoteException;
+
+import aQute.bnd.annotation.ProviderType;
 
 /**
  * Provides the SOAP utility for the
