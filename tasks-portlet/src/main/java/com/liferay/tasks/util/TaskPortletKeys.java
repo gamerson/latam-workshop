@@ -17,7 +17,7 @@
 
 package com.liferay.tasks.util;
 
-import com.liferay.portal.util.PortletKeys;
+import com.liferay.portal.kernel.util.PortletKeys;
 
 /**
  * @author Jonathan Lee
